@@ -12,14 +12,14 @@ Result is
 /usr/sbin/john
 /rofs/usr/sbin/john
 ```
-
+do
 ```sh
 cat /usr/sbin/john
 ```
 
 will output us
 ```sh
-v
+cdiiddwpgswtgt
 ```
 This is some kind of a cipher
 To decode it we use ceaser cipher and shift alphabet on 11 chars.
