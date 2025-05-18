@@ -1,53 +1,70 @@
-Execute this
+# Level 00 - Finding the Password
+
+## Step 1: Find files owned by flag00
+
+Execute this command to find all files owned by the user flag00:
+
 ```sh
 find / -user flag00 2>/dev/null
 ```
-* find / -  this will start search from the root directory.
-* -user flag00 - only list files whouse owner is the user flag00
-* 2>/dev/null - supress errors
 
+**Command explanation:**
+- `find /` - Search starting from the root directory
+- `-user flag00` - Only list files owned by user flag00
+- `2>/dev/null` - Suppress error messages
 
-Result is
+## Step 2: Examine the results
+
+The search returns these files:
 ```sh
 /usr/sbin/john
 /rofs/usr/sbin/john
 ```
-do
+
+Let's check what's inside:
 ```sh
 cat /usr/sbin/john
 ```
 
-will output us
+Output:
 ```sh
 cdiiddwpgswtgt
 ```
-This is some kind of a cipher
-To decode it we use ceaser cipher and shift alphabet on 11 chars.
-https://cryptii.com/pipes/caesar-cipher
-Result is
+
+This appears to be a cipher. To decode it, we use a Caesar cipher with a shift of 11 characters. You can use an online tool like [Cryptii](https://cryptii.com/pipes/caesar-cipher).
+
+Decoded result:
 ```
 nottoohardhere
 ```
 
-now lets enter flag00 user
-```
+## Step 3: Switch to flag00 user
+
+Use the decoded password to switch to the flag00 user:
+```sh
 su flag00
 Password: nottoohardhere
 ```
-It will output
+
+Output:
 ```
-Don't forget to launch getflag !
+Don't forget to launch getflag!
 ```
-We do it
-```
+
+## Step 4: Get the flag
+
+Run the following command to retrieve the flag:
+```sh
 getflag
 ```
-Output is
+
+Output:
 ```
-Check flag.Here is your token : x24ti5gi3x0ol2eh4esiuxias
+Check flag.Here is your token: x24ti5gi3x0ol2eh4esiuxias
 ```
-We save flag in our repo and continue to the next level
-```
+
+Save the flag in your repository and proceed to the next level:
+```sh
 su level01
 Password: x24ti5gi3x0ol2eh4esiuxias
 ```
